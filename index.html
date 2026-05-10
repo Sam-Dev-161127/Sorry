@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kuchupuchu is Sorry 💜 | For Chirkut</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --lavender-deep: #7c5cbf;
+    --lavender-mid: #9b7fd4;
+    --lavender-soft: #c3a8e8;
+    --lavender-pale: #e8d8f8;
+    --lavender-blush: #f5eeff;
+    --white: #fff;
+    --text-dark: #3a2660;
+    --text-mid: #6b4d9a;
+    --rose: #e88cc8;
+    --rose-soft: #f7d6ee;
+    --gold: #d4a9e0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--lavender-blush);
+    font-family: 'Lato', sans-serif;
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── FLOATING PETALS ── */
+  .petal {
+    position: fixed;
+    pointer-events: none;
+    font-size: 1.2rem;
+    opacity: 0;
+    animation: fall linear infinite;
+    z-index: 0;
+  }
+  @keyframes fall {
+    0%   { opacity: 0; transform: translateY(-40px) rotate(0deg); }
+    10%  { opacity: 0.7; }
+    90%  { opacity: 0.5; }
+    100% { opacity: 0; transform: translateY(105vh) rotate(360deg); }
+  }
+
+  /* ── SECTION BASE ── */
+  section {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 24px;
+    text-align: center;
+  }
+
+  /* ══ HERO ══ */
+  #hero {
+    background: linear-gradient(160deg, #ede0fc 0%, #f9f0ff 50%, #dfc8f7 100%);
+  }
+
+  .heart-ring {
+    font-size: 5rem;
+    animation: pulse 2s ease-in-out infinite;
+    display: block;
+    margin-bottom: 16px;
+    filter: drop-shadow(0 0 18px #c3a8e888);
+  }
+  @keyframes pulse {
+    0%,100% { transform: scale(1); }
+    50%      { transform: scale(1.12); }
+  }
+
+  .hero-tag {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+    color: var(--lavender-mid);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    opacity: 0;
+    animation: fadeUp 1s 0.3s forwards;
+  }
+
+  h1.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.6rem, 9vw, 5rem);
+    color: var(--lavender-deep);
+    line-height: 1.1;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 1s 0.6s forwards;
+  }
+  h1.hero-title span { color: var(--rose); }
+
+  .hero-sub {
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    color: var(--text-mid);
+    max-width: 480px;
+    line-height: 1.7;
+    opacity: 0;
+    animation: fadeUp 1s 0.9s forwards;
+  }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    opacity: 0;
+    animation: fadeUp 1s 1.5s forwards;
+  }
+  .scroll-cue span { font-size: 0.75rem; letter-spacing: 2px; color: var(--lavender-mid); text-transform: uppercase; }
+  .arrow { font-size: 1.4rem; animation: bounce 1.5s ease-in-out infinite; color: var(--lavender-mid); }
+  @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ══ LETTER ══ */
+  #letter {
+    background: linear-gradient(170deg, #f9f0ff 0%, #ede0fc 100%);
+  }
+
+  .letter-card {
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: blur(12px);
+    border: 1.5px solid var(--lavender-soft);
+    border-radius: 28px;
+    padding: clamp(32px, 6vw, 60px) clamp(28px, 6vw, 56px);
+    max-width: 680px;
+    width: 100%;
+    box-shadow: 0 24px 64px #c3a8e840, 0 4px 12px #9b7fd420;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+  }
+  .letter-card::before {
+    content: '💜';
+    position: absolute;
+    top: -20px; right: -20px;
+    font-size: 8rem;
+    opacity: 0.06;
+    transform: rotate(-15deg);
+  }
+
+  .letter-from {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--lavender-mid);
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .letter-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
+    color: var(--lavender-deep);
+    margin-bottom: 24px;
+  }
+
+  .letter-card p {
+    font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+    color: var(--text-mid);
+    line-height: 1.9;
+    margin-bottom: 16px;
+  }
+
+  .letter-card p em {
+    font-family: 'Playfair Display', serif;
+    color: var(--lavender-deep);
+    font-style: italic;
+  }
+
+  .letter-sign {
+    margin-top: 28px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--lavender-deep);
+    text-align: right;
+  }
+
+  /* ══ FORGIVE ══ */
+  #forgive {
+    background: linear-gradient(160deg, #dfc8f7 0%, #f5eeff 60%, #e8d8f8 100%);
+    gap: 0;
+  }
+
+  .forgive-label {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    color: var(--lavender-mid);
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+
+  .forgive-q {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 7vw, 3.8rem);
+    color: var(--lavender-deep);
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  .forgive-sub {
+    color: var(--text-mid);
+    font-size: 1rem;
+    margin-bottom: 48px;
+  }
+
+  .btn-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn {
+    padding: 16px 44px;
+    border-radius: 50px;
+    border: none;
+    font-size: 1.1rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.15);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .btn:hover::after { opacity: 1; }
+
+  .btn-yes {
+    background: linear-gradient(135deg, var(--lavender-deep), var(--lavender-mid));
+    color: white;
+    box-shadow: 0 8px 28px #9b7fd455;
+  }
+  .btn-yes:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 14px 40px #9b7fd468; }
+  .btn-yes:active { transform: scale(0.97); }
+
+  .btn-no {
+    background: white;
+    color: var(--text-mid);
+    border: 1.5px solid var(--lavender-soft);
+    box-shadow: 0 4px 16px #c3a8e830;
+  }
+  .btn-no:hover { transform: translateY(-2px); background: var(--lavender-pale); }
+
+  /* ══ DIALOG OVERLAY ══ */
+  .overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(60,30,90,0.45);
+    backdrop-filter: blur(6px);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .overlay.open { display: flex; animation: fadeIn 0.3s ease; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  .dialog {
+    background: white;
+    border-radius: 28px;
+    padding: 44px 40px;
+    max-width: 440px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 32px 80px #7c5cbf44;
+    position: relative;
+    animation: popIn 0.4s cubic-bezier(.34,1.56,.64,1);
+  }
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.8) translateY(30px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .dialog-emoji { font-size: 3.2rem; margin-bottom: 12px; display: block; }
+
+  .dialog h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    color: var(--lavender-deep);
+    margin-bottom: 10px;
+  }
+
+  .dialog p {
+    color: var(--text-mid);
+    font-size: 0.98rem;
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+
+  /* ══ FINAL SCREEN ══ */
+  #final {
+    display: none;
+    background: linear-gradient(160deg, #c3a8e8 0%, #e8d8f8 50%, #f5eeff 100%);
+    min-height: 100vh;
+  }
+  #final.show { display: flex; }
+
+  .confetti-wrap { font-size: 2.2rem; margin-bottom: 20px; letter-spacing: 8px; animation: spin 2s linear infinite; display: inline-block; }
+  @keyframes spin { 0%,100% { transform: rotate(-8deg); } 50% { transform: rotate(8deg); } }
+
+  .final-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 8vw, 4.5rem);
+    color: var(--lavender-deep);
+    margin-bottom: 16px;
+    line-height: 1.15;
+  }
+
+  .final-msg {
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    color: var(--text-mid);
+    max-width: 480px;
+    line-height: 1.8;
+    margin-bottom: 32px;
+  }
+
+  .final-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--lavender-deep), var(--rose));
+    color: white;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    box-shadow: 0 8px 28px #9b7fd460;
+  }
+
+  /* ══ NO SCREEN ══ */
+  #noscreen {
+    display: none;
+    background: linear-gradient(160deg, #f5eeff 0%, #ede0fc 100%);
+    min-height: 100vh;
+  }
+  #noscreen.show { display: flex; }
+
+  /* confetti burst */
+  .burst { font-size: 1rem; position: fixed; pointer-events: none; animation: burst 1s ease-out forwards; z-index: 200; }
+  @keyframes burst { 0% { opacity: 1; transform: translate(0,0) scale(1); } 100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0.3); } }
+
+  /* no-btn wiggle */
+  @keyframes wiggle { 0%,100% { transform: rotate(0); } 25% { transform: rotate(-6deg); } 75% { transform: rotate(6deg); } }
+  .wiggle { animation: wiggle 0.4s ease; }
+</style>
+</head>
+<body>
+
+<!-- Floating petals -->
+<div id="petals"></div>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <span class="heart-ring">💜</span>
+  <p class="hero-tag">A message from the heart — Kuchupuchu 💜</p>
+  <h1 class="hero-title">I'm so sorry,<br><span>Chirkut</span> 🌸</h1>
+  <p class="hero-sub">Sometimes we hurt the people we love the most without meaning to. This is Kuchupuchu, being brave enough to say it.</p>
+  <div class="scroll-cue">
+    <span>scroll down</span>
+    <div class="arrow">↓</div>
+  </div>
+</section>
+
+<!-- ══ LETTER ══ -->
+<section id="letter">
+  <div class="letter-card reveal">
+    <p class="letter-from">✦ From Kuchupuchu, to Chirkut ✦</p>
+    <h2>Hey Chirkut, my favourite person 🌷</h2>
+    <p>I don't even know how to start this, honestly. But I know I messed up, and I hate that I hurt you — especially <em>you</em>, of all people. It's me, Kuchupuchu, and I'm not okay with things being weird between us.</p>
+    <p>You're the one who knows every chapter of my story. You've laughed with me, cried with me, and stayed when it wasn't easy. And I took that for granted. I know I did.</p>
+    <p>I keep replaying everything and thinking — <em>why didn't I just think before I acted?</em> You deserved better. You always do, Chirkut.</p>
+    <p>I miss you. I miss our long calls, our random memes, our "nothing but everything" conversations. Our friendship means the whole world to me, and I refuse to let my stupid mistake ruin something this beautiful.</p>
+    <p>I'm truly, deeply, from the bottom of my heart — <em>sorry, yaar.</em> 💜</p>
+    <div class="letter-sign">— Always yours, Kuchupuchu 🌸</div>
+  </div>
+</section>
+
+<!-- ══ FORGIVE ══ -->
+<section id="forgive">
+  <p class="forgive-label reveal">✦ the big question ✦</p>
+  <h2 class="forgive-q reveal">Chirkut, will you forgive me? 🥺</h2>
+  <p class="forgive-sub reveal">Kuchupuchu is begging… please say yes 🙏💜</p>
+  <div class="btn-row reveal">
+    <button class="btn btn-yes" onclick="handleYes()">Haan, maaf kar diya 💜</button>
+    <button class="btn btn-no" id="noBtn" onclick="handleNo()">Nahi… 😒</button>
+  </div>
+</section>
+
+<!-- ══ DIALOG: Are you sure? ══ -->
+<div class="overlay" id="overlay1">
+  <div class="dialog">
+    <span class="dialog-emoji">🥺</span>
+    <h3>Sachi maaf karegi, Chirkut?</h3>
+    <p>Promise? Pakka? Kuchupuchu ko maaf kar do! 🌸<br>Dil se bolo…</p>
+    <div class="btn-row" style="justify-content:center">
+      <button class="btn btn-yes" onclick="showDialog2()">Haan, sachi mein 💜</button>
+      <button class="btn btn-no" onclick="closeDialog(1)">Wait, sochu…</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ DIALOG: Are you REALLY sure? ══ -->
+<div class="overlay" id="overlay2">
+  <div class="dialog">
+    <span class="dialog-emoji">🌸</span>
+    <h3>Are you really sure?</h3>
+    <p>Ek baar aur confirm karo — bestie status restored? 🫶<br>Pinky promise? 🤙</p>
+    <div class="btn-row" style="justify-content:center">
+      <button class="btn btn-yes" onclick="showFinal()">BILKUL! 100% Maaf! 🎉</button>
+      <button class="btn btn-no" onclick="showDialog3()">Hmm… pehle baat karte hain</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ DIALOG: One last chance ══ -->
+<div class="overlay" id="overlay3">
+  <div class="dialog">
+    <span class="dialog-emoji">😭</span>
+    <h3>Yaar please 🥺</h3>
+    <p>Kuchupuchu seriously maafi maang raha/rahi hai. Tum Kuchupuchu ki sabse special bestie ho, Chirkut. Life is too short for this distance between us 💔</p>
+    <div class="btn-row" style="justify-content:center">
+      <button class="btn btn-yes" onclick="showFinal()">Okay okay, maaf kiya! 💜</button>
+      <button class="btn btn-no" onclick="closeDialog(3)">Let me think…</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FINAL (forgiven) ══ -->
+<section id="final">
+  <div class="confetti-wrap">🎊🎉🌸💜🌸🎉🎊</div>
+  <h2 class="final-title">Yayyyy!! 🥳<br>We're good! 💜</h2>
+  <p class="final-msg">Chirkut ne Kuchupuchu ko maaf kar diya! 🥹 I promise to be a better bestie every single day. Bestie status: <strong>FULLY RESTORED</strong> 🌸💜</p>
+  <div class="final-badge">✦ Kuchupuchu 💜 Chirkut — Besties for Life ✦</div>
+</section>
+
+<!-- ══ NO SCREEN ══ -->
+<section id="noscreen">
+  <span style="font-size:4rem; margin-bottom:20px;">😭</span>
+  <h2 class="final-title" style="font-size:clamp(2rem,6vw,3.5rem);">Okay… I understand.</h2>
+  <p class="final-msg">Kuchupuchu will give you space, Chirkut. But just know — she's/he's not giving up on us. Take your time. Kuchupuchu will be right here, waiting. 💜</p>
+  <button class="btn btn-yes" style="margin-top:8px" onclick="tryAgain()">Actually… let's try again 🌸</button>
+</section>
+
+<script>
+  /* ── PETALS ── */
+  const petalEmoji = ['🌸','💜','✿','🌷','💐','🫧'];
+  const wrap = document.getElementById('petals');
+  for (let i = 0; i < 22; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.textContent = petalEmoji[Math.floor(Math.random() * petalEmoji.length)];
+    const left = Math.random() * 100;
+    const delay = Math.random() * 12;
+    const dur = 7 + Math.random() * 10;
+    p.style.cssText = `left:${left}vw; animation-duration:${dur}s; animation-delay:${delay}s; font-size:${0.9 + Math.random()}rem;`;
+    wrap.appendChild(p);
+  }
+
+  /* ── SCROLL REVEAL ── */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.style.animation = 'fadeUp 0.8s ease forwards'; e.target.style.opacity = '1'; } });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach(el => {
+    el.style.opacity = '0';
+    observer.observe(el);
+  });
+
+  /* ── NO BUTTON ESCAPING ── */
+  let noCount = 0;
+  const noMessages = ['Nahi? 😢','Pakka nahi? 🥺','Thoda toh soch lo…','Yaar please 😭','Ek chance do na 🙏'];
+
+  function handleNo() {
+    noCount++;
+    const btn = document.getElementById('noBtn');
+    btn.classList.remove('wiggle');
+    void btn.offsetWidth; // reflow
+    btn.classList.add('wiggle');
+    btn.textContent = noMessages[Math.min(noCount - 1, noMessages.length - 1)];
+
+    if (noCount >= 4) {
+      // Move the button to random position so they can't click it
+      const maxX = window.innerWidth - 180;
+      const maxY = window.innerHeight - 60;
+      btn.style.position = 'fixed';
+      btn.style.left = Math.random() * maxX + 'px';
+      btn.style.top = Math.random() * maxY + 'px';
+      btn.style.zIndex = '50';
+    }
+  }
+
+  /* ── YES FLOW ── */
+  function handleYes() {
+    document.getElementById('overlay1').classList.add('open');
+  }
+
+  function showDialog2() {
+    document.getElementById('overlay1').classList.remove('open');
+    setTimeout(() => document.getElementById('overlay2').classList.add('open'), 200);
+  }
+
+  function showDialog3() {
+    document.getElementById('overlay2').classList.remove('open');
+    setTimeout(() => document.getElementById('overlay3').classList.add('open'), 200);
+  }
+
+  function closeDialog(n) {
+    document.getElementById('overlay' + n).classList.remove('open');
+  }
+
+  function showFinal() {
+    ['overlay1','overlay2','overlay3'].forEach(id => document.getElementById(id).classList.remove('open'));
+    document.getElementById('forgive').style.display = 'none';
+    document.getElementById('final').classList.add('show');
+    launchConfetti();
+  }
+
+  function tryAgain() {
+    document.getElementById('noscreen').classList.remove('show');
+    document.getElementById('forgive').style.display = 'flex';
+    const btn = document.getElementById('noBtn');
+    btn.style.position = '';
+    btn.style.left = '';
+    btn.style.top = '';
+    btn.textContent = 'Nahi… 😒';
+    noCount = 0;
+    window.scrollTo({ top: document.getElementById('forgive').offsetTop, behavior: 'smooth' });
+  }
+
+  /* ── CONFETTI BURST ── */
+  function launchConfetti() {
+    const chars = ['💜','🌸','✨','🎉','🎊','⭐','💫','🫶'];
+    for (let i = 0; i < 40; i++) {
+      const el = document.createElement('div');
+      el.className = 'burst';
+      el.textContent = chars[Math.floor(Math.random() * chars.length)];
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.top = Math.random() * 100 + 'vh';
+      el.style.setProperty('--tx', (Math.random() - 0.5) * 200 + 'px');
+      el.style.setProperty('--ty', (Math.random() - 0.5) * 200 + 'px');
+      el.style.animationDelay = Math.random() * 0.6 + 's';
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 1600);
+    }
+  }
+</script>
+</body>
+</html>
